@@ -1,0 +1,109 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Details";
+}
+
+@model Periodical
+
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Catalog - @ViewData["Title"]</h2>
+
+    </div>
+
+    </div>
+</section><!-- End Breadcrumbs -->
+
+<!-- ======= Blog Single Section ======= -->
+<section id="blog" class="blog">
+    <div class="container" data-aos="fade-up">
+
+    <div class="row">
+
+        <div class="col-lg-8 entries">
+
+        <article class="entry entry-single">
+
+            <div class="mb-4">
+                <img src=@Model.CoverImage alt="" />
+            </div>
+
+            <h2 class="entry-title"> @Model.Name </h2>
+
+            <div class="entry-content">
+            <p>
+                @Model.Description
+            </p>
+
+            <table class="table">
+                <tr>
+                    <td><b>ISSN:</b></td>
+                    <td>@Model.ISSN</td>
+                </tr>
+                <tr>
+                    <td><b>Категория:</b></td>
+                    <td>@Model.Category.CategoryName</td>
+                </tr>
+                <tr>
+                    <td><b>Тип:</b></td>
+                    <td>@Model.PublicationType.PublicationTypeName</td>
+                </tr>
+                <tr>
+                    <td><b>Страниц:</b></td>
+                    <td>@Model.NumPages</td>
+                </tr>
+                <tr>
+                    <td><b>Вып. в мес.:</b></td>
+                    <td>@Model.TimesInMonth</td>
+                </tr>
+                <tr>
+                    <td><b>Цена:</b></td>
+                    <td>@Model.Price</td>
+                </tr>
+                <tr>
+                    <td><b>Издательство:</b></td>
+                    <td>@Model.Publisher.PublisherName</td>
+                </tr>
+            </table>
+
+            <a asp-action="AddSubscription" asp-controller="Subscription" asp-route-magId="@Model.Id" class="btn btn-primary">Подписаться</a>
+
+            </div>
+        </article><!-- End blog entry -->
+
+
+
+            
+
+        </div><!-- End blog entries list -->
+
+        <div class="col-lg-4">
+
+        <div class="sidebar">
+
+            <h3 class="sidebar-title">Categories</h3>
+              <div class="sidebar-item categories">
+                @{
+                    ListViewModel categoriesthis = new ListViewModel
+                    {
+                        categoriesToPage = ViewBag.Categories
+                    };
+                }
+               <partial name="CategoriesList" model=categoriesthis />
+
+
+            </div><!-- End sidebar -->
+
+        </div><!-- End blog sidebar -->
+
+        </div>
+
+    </div>
+</section><!-- End Blog Single Section -->
+

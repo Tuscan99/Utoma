@@ -1,0 +1,96 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Catalog";
+}
+
+@model ListViewModel
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>@ViewData["Title"]</h2>
+
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+
+          <div class="col-lg-8 entries">
+
+            <article class="entry entry-single">
+
+               <div class="container grid-demo">
+                    <div class="row">
+
+                      <header class="col-md-12 text-center">
+                        <h2>Открыта подписка</h2>
+                        <h3>На следующий год</h3>
+                      </header>
+
+                          @foreach(var el in @Model.periodicalsToPage)
+                            {
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12">
+                                    <div class="card">
+                                        <a asp-action="Details" asp-route-id="@el.Id">
+                                            <img class="card-img-top" src=@el.CoverImage alt="Card image cap" />
+                                        </a>
+                                        <div class="card-body">
+                                            <p class="card-text">@el.Name</p>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+                    </div>
+                </div>
+
+            </article><!-- End blog entry -->
+
+
+          </div><!-- End blog entries list -->
+
+
+
+          <div class="col-lg-4">
+
+            <div class="sidebar">
+
+@*              <h3 class="sidebar-title">Search</h3>
+              <div class="sidebar-item search-form">
+                <form action="">
+                  <input type="text">
+                  <button type="submit"><i class="bi bi-search"></i></button>
+                </form>
+              </div><!-- End sidebar search formn-->*@
+
+              <h3 class="sidebar-title">Categories</h3>
+              <div class="sidebar-item categories">
+                       
+               @* @Html.Partial("CategoriesList", @Model.categoriesToPage)*@
+
+               <partial name="CategoriesList" model=@Model />
+
+              </div><!-- End sidebar categories-->
+
+
+              </div><!-- End sidebar tags-->
+
+            </div><!-- End sidebar -->
+
+          </div><!-- End blog sidebar -->
+
+        </div>
+
+      </div>
+    </section><!-- End Blog Single Section -->

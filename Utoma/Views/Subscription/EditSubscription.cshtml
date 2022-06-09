@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "SubscriptionEdit";
+}
+@model Subscription
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Management - @ViewData["Title"]
+
+        </div>
+
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<div class="container mt-4 mb-4">
+    <div class="row content">
+
+        <form asp-action="EditSubscription" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="row">
+                <div class="col-md-12">
+                    
+                    <input type="hidden" asp-for="PeriodicalId" />
+                    <div class="form-group m-1">
+                        <label asp-for="FullName"></label>
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                        <input asp-for="FullName" class="form-control" />
+                    </div>
+                    <div class="form-group m-1">
+                        <label asp-for="City"></label>
+                        <span asp-validation-for="City" class="text-danger"></span>
+                        <input asp-for="City" class="form-control" />
+                    </div>
+                    <div class="form-group m-1">
+                        <label asp-for="Address"></label>
+                        <span asp-validation-for="Address" class="text-danger"></span>
+                        <input asp-for="Address" class="form-control" />
+                    </div>
+                    <div class="form-group m-1">
+                        <label asp-for="PostIndex"></label>
+                        <span asp-validation-for="PostIndex" class="text-danger"></span>
+                        <input asp-for="PostIndex" class="form-control" />
+                    </div>
+                    <div class="form-group m-1">
+                        <label asp-for="ContactPhoneNumber"></label>
+                        <span asp-validation-for="ContactPhoneNumber" class="text-danger"></span>
+                        <input asp-for="ContactPhoneNumber" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-primary" type="submit">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+

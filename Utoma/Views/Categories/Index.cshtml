@@ -1,0 +1,69 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "CategoriesIndex";
+}
+@model IEnumerable<Category>
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Management - @ViewData["Title"]</h2>
+        </div>
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<div class="container mt-4 mb-4">
+    <div class="row content">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Название</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            @{
+                string substr = "_(archive)";
+            }
+            @foreach(var cat in Model)
+            {
+                if(cat.CategoryName != null)
+                {
+                    if (!cat.CategoryName.Contains(substr))
+                    {
+                        <tr>
+                            <th scope="row">@cat.CategoryId</th>
+                            <td>@cat.CategoryName</td>
+                            <td>
+                                <form asp-action="DeleteCategory" method="post">
+                                    <a asp-action="EditCategory" asp-route-id="@cat.CategoryId">Edit</a>
+                                    <span> | </span>
+                                    <input type="hidden" name="CategoryId" value="@cat.CategoryId" />
+                                    <input type="hidden" name="CategoryName" value="@cat.CategoryName" />
+                                    <button type="submit" class="btn btn-sm btn-danger">                                
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>    
+                    }    
+                }
+            }
+
+          </tbody>
+        </table>
+        <div>
+            <a asp-action="AddCategory" class="btn btn-primary">Добавить категорию</a>
+        </div>
+    </div>
+</div>
+
+
+

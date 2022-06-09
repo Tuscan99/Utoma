@@ -1,0 +1,96 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "NewsArticleEdit";
+}
+@model News
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Materials - @ViewData["Title"]
+
+        </div>
+
+    </div>
+</section>
+<!-- End Breadcrumbs -->
+
+<div class="container mt-4 mb-4">
+    <div class="row content">
+
+        <form asp-action="EditNews" method="post">
+            <input type="hidden" asp-for="newsId" />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group m-1">
+                        <label asp-for="Title"></label>
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                        <input asp-for="Title" class="form-control" />
+                    </div>
+
+                    <div class="form-group m-1">
+                        <label asp-for="PublishDate"></label>
+                        @*<span asp-validation-for="PublishDate" class="text-danger"></span>
+                        <input asp-for="PublishDate" class="form-control" />*@
+                        <input asp-for="PublishDate" type="hidden" />
+                    </div>
+
+                    <div class="form-group m-1">
+                        <label asp-for="Author"></label>
+                        @*<span asp-validation-for="Author" class="text-danger"></span>
+                        <input asp-for="Author" class="form-control" />*@
+                        <input asp-for="Author" type="hidden" />
+                    </div>
+
+                    <div class="form-group m-1">
+                        <label asp-for="NewsCategory"></label>
+                        @*<span asp-validation-for="Title" class="text-danger"></span>
+                        <input asp-for="Title" class="form-control" />*@
+                        <input asp-for="NewsCategory" type="hidden" />
+                    </div>
+
+                    <div class="form-group m-1">
+                        <label asp-for="NewsDescription"></label>
+                        @*<span asp-validation-for="Title" class="text-danger"></span>
+                        <input asp-for="Title" class="form-control" />*@
+                        <input asp-for="NewsDescription" type="hidden" />
+                    </div>
+
+                    <div class="form-group m-1">
+                        <label asp-for="Link"></label>
+                        @*<span asp-validation-for="Title" class="text-danger"></span>
+                        <input asp-for="Title" class="form-control" />*@
+                        <input asp-for="Link" type="hidden" />
+                    </div>
+
+                    <div class="form-group m-1">
+                        <label asp-for="Tags"></label>
+                        <input asp-for="Tags" class="form-control" />
+                    </div>
+
+                    <div class="form-group m-1">
+                        <label asp-for="Newspapers"></label>
+                        <input asp-for="Newspapers" class="form-control" />
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-primary" type="submit">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
